@@ -1,0 +1,16 @@
+{
+  "id": "4126698",
+  "name": "profile",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "个人",
+  "glyphs": [
+    {
+      "icon_id": "10268991",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e914",
+      "unicode_decimal": 59668
+    }
+  ]
+}

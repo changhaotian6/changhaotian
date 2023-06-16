@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-14 12:56:40
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-14 15:02:51
+ * @LastEditTime: 2023-06-15 15:03:49
  * @FilePath: \project\vite.config.js
  */
 import { defineConfig } from "vite";
@@ -33,4 +33,5 @@ export default defineConfig({
             },
         },
     },
+    envPrefix: "VUE_APP_"  // 自定义env变量命名规则
 });

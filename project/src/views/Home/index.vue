@@ -4,37 +4,58 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-14 12:56:40
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-14 21:57:13
+ * @LastEditTime: 2023-06-15 14:05:07
  * @FilePath: \project\src\views\home\index.vue
 -->
 <template>
   <div class="word-container">
+    <Loading v-if="state.loading" />
+
     <video
       style="width: 100%; height: 100%; display: block"
       src="@/assets/videos/map.mp4"
+      poster="@/assets/images/map.png"
+      :controls="false"
       autoplay
       muted
       loop
+      preload
+      ref="videoRef"
+      v-show="!state.loading"
     ></video>
-    <div class="word-title" ref="wordTitle">欢迎来到常浩田的个人网站</div>
-    <div class="word-button" @click.stop="handleEnterSite">
-      <span>点我进入</span>
-    </div>
+
+    <template v-if="!state.loading">
+      <div class="word-title" id="wordTitle">欢迎来到常浩田的个人空间</div>
+      <div class="word-button" @click.stop="handleEnterSite">
+        <span>点我进入</span>
+      </div>
+    </template>
   </div>
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, nextTick, toValue } from "vue";
-const wordTitle = ref();
-const handleEnterSite = () => {};
+import Loading from "@/components/common/Loading/index.vue";
+import { ref, reactive, onMounted, getCurrentInstance, nextTick } from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+// 视频加载状态
+const state = reactive({ loading: true });
+// 视频元素
+const videoRef = ref();
+// 点击进入事件
+const handleEnterSite = () => {
+  // 跳转到个人简历页面
+  router.push("/myself");
+};
 
 // 加载文字标题内容
 const loadWordTitle = () => {
-  let delay = 0.3;
-  let revealText = wordTitle.value;
-  let letters = revealText.textContent.split("");
+  // 标题元素
+  const revealText = document.querySelector('#wordTitle');
+  const delay = 0.3;
+  const letters = revealText.textContent.split("");
   revealText.textContent = "";
-  let middle = letters.filter((e) => e !== " ").length / 2;
+  const middle = letters.filter((e) => e !== " ").length / 2;
   letters.forEach((letter, i) => {
     let span = document.createElement("span");
     span.textContent = letter;
@@ -43,9 +64,22 @@ const loadWordTitle = () => {
   });
 };
 
+// 监听视频可以流程播放
+const listenVideoCanplaythrough = () => {
+  //已经可以流畅的播放
+  videoRef.value.addEventListener("canplaythrough", function (e) {
+    if (!state.loading) {
+      return;
+    }
+    state.loading = false;
+    // 加载文字标题内容
+    nextTick(loadWordTitle);
+  });
+};
+
 onMounted(() => {
-  // 加载文字标题内容
-  loadWordTitle();
+  // 监听视频可以流程播放
+  listenVideoCanplaythrough();
 });
 </script>
 
@@ -111,34 +145,27 @@ onMounted(() => {
   top: 33%;
   margin-left: -75px;
   margin-top: 135px;
+  padding: 5px;
   width: 150px;
   height: auto;
   background-color: transparent;
   border: none;
   text-align: center;
   cursor: pointer;
+  opacity: 0;
+  animation: wordButton 1.5s linear 1.8s;
+  animation-fill-mode: forwards;
 }
-.word-button span {
-  position: relative;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 15px 25px;
-  transition: 0.3s;
-  letter-spacing: 5px;
+
+@keyframes wordButton {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-.word-button {
-  padding: 5px;
-}
-.word-button span {
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
-}
+
 .word-button::before,
 .word-button::after {
   position: absolute;
@@ -169,5 +196,23 @@ onMounted(() => {
 .word-button:hover::after {
   width: 99%;
   height: 98%;
+}
+
+.word-button span {
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 25px;
+  transition: 0.3s;
+  letter-spacing: 5px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+ 
 }
 </style>
