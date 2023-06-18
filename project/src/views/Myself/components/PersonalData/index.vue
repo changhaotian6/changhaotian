@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 22:14:17
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-16 23:23:48
+ * @LastEditTime: 2023-06-17 18:27:22
  * @FilePath: \project\src\views\Myself\components\PersonalData\index.vue
 -->
 <!--
@@ -18,18 +18,43 @@
 -->
 <template>
   <div class="personal-container">
-    <PersonalMenu />
-    <PersonalProfile v-if="profileStore.activeMenu === 'profile'" />
+    <PersonalMenu :menuList="menuList"/>
+    <PersonalProfile v-if="personalStore.activeMenu === 'profile'" />
+    <PersonalSchool v-if="personalStore.activeMenu === 'school'" />
+    <PersonalWork v-if="personalStore.activeMenu === 'work'"/>
   </div>
 </template>
 
 <script setup>
-import PersonalProfile from "./PersonalProfile.vue";
 import PersonalMenu from "./PersonalMenu.vue";
-import { ref, defineProps, toRefs, computed, watch } from "vue";
-import { useProfileStore } from "@/store/modules/profile.js";
+import PersonalProfile from "./PersonalProfile.vue";
+import PersonalSchool from "./PersonalSchool.vue";
+import PersonalWork from "./PersonalWork.vue";
+import { usePersonalStore } from "@/store/modules/personal.js";
+import { ref, defineProps, toRefs, computed, watch, reactive } from "vue";
 
-const profileStore = useProfileStore();
+const personalStore = usePersonalStore();
+
+
+const menuList = reactive([
+  {
+    name: "个人简介",
+    key: "profile",
+  },
+  {
+    name: "教育经历",
+    key: "school",
+  },
+  {
+    name: "工作经历",
+    key: "work",
+  },
+  {
+    name: "技能特长",
+    key: "skill",
+  },
+]);
+
 </script>
 
 <style lang="scss" scoped>

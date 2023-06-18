@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-14 12:56:40
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-16 21:25:15
+ * @LastEditTime: 2023-06-17 14:14:29
  * @FilePath: \project\src\views\Myself\components\Visual\CesiumInstance.vue
 -->
 <template>
@@ -15,6 +15,8 @@
 import { onMounted, getCurrentInstance } from "vue";
 import * as Cesium from "cesium";
 import cesiumConfig from "@/config/cesium.config.js";
+window.Cesium = Cesium;
+
 const { proxy } = getCurrentInstance();
 let viewer;
 /**
@@ -28,7 +30,7 @@ const initCesiumViewer = () => {
       Cesium.IonImageryProvider.fromAssetId(3812)
     ),
   });
-  
+
   // 初始化3d公共方法
   proxy.$cht3d.init(viewer);
 
@@ -94,15 +96,12 @@ const handleViewerServiceImagery = (viewer) => {
  * */
 const handleBoundaryHighlighting = (viewer) => {
   // 添加边界高亮
-  let chinaJSON = Cesium.GeoJsonDataSource.load(
-    "/cesium/geojson/CHN.geo.json",
-    {
-      stroke: Cesium.Color.AQUA,
-      fill: Cesium.Color.PALETURQUOISE.withAlpha(0), //填充区域设置为透明
-      strokeWidth: 10, //在这里设置线宽度无效，所以在下边单独进行了线条样式设置
-      markerSymbol: "?",
-    }
-  );
+  let chinaJSON = Cesium.GeoJsonDataSource.load("/czm/geojson/CHN.geo.json", {
+    stroke: Cesium.Color.AQUA,
+    fill: Cesium.Color.PALETURQUOISE.withAlpha(0), //填充区域设置为透明
+    strokeWidth: 10, //在这里设置线宽度无效，所以在下边单独进行了线条样式设置
+    markerSymbol: "?",
+  });
 
   //使用 entity.polygon.hierarchy._value.positions设置线条的颜色
   chinaJSON.then((dataSource) => {

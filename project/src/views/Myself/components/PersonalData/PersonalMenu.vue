@@ -2,7 +2,7 @@
   <ul class="personal-menu-container">
     <li
       class="personal-menu-item event"
-      :class="{ active: profileStore.activeMenu === item.key }"
+      :class="{ active: personalStore.activeMenu === item.key }"
       v-for="item in menuList"
       :key="item.key"
       @click="handleClickMenu(item.key)"
@@ -13,33 +13,22 @@
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
+import { defineProps, ref } from "vue";
 import { flyTo } from "@/utils/cesium.js";
-import { useProfileStore } from "@/store/modules/profile.js";
+import { usePersonalStore } from "@/store/modules/personal.js";
 
-const profileStore = useProfileStore();
+const personalStore = usePersonalStore();
 
-const menuList = reactive([
-  {
-    name: "个人简介",
-    key: "profile",
+const { menuList } = defineProps({
+  menuList: {
+    type: Array,
+    default: [],
   },
-  {
-    name: "教育经历",
-    key: "education",
-  },
-  {
-    name: "工作经历",
-    key: "work",
-  },
-  {
-    name: "技能特长",
-    key: "skill",
-  },
-]);
+});
 
+
+// 查看济宁市视角
 const handleProfile = () => {
-  // 济宁市视角
   flyTo({
     lat: 117.0595974,
     lon: 31.3104769,
@@ -47,14 +36,44 @@ const handleProfile = () => {
     heading: 355.3,
     pitch: -27.5,
     roll: 0,
-    duration: 3,
+    duration: 2,
   });
 };
 
-const methods = new Map([["profile", handleProfile]]);
+// 查看学校视角
+const handleSchool = () => {
+  flyTo({
+    lat: 120.5309333,
+    lon: 30.5685520,
+    height: 337866.29,
+    heading:354.0,
+    pitch: -28.6,
+    roll: 0,
+    duration: 2,
+  });
+};
+
+// 查看工作经历视角
+const handleWork = () => {
+  flyTo({
+    lat: 120.1792802,
+    lon: 15.1073184,
+    height: 1471114.38,
+    heading:353.1,
+    pitch: -48.8,
+    roll: 0,
+    duration: 2,
+  });
+};
+
+const methods = new Map([
+  ["profile", handleProfile],
+  ["school", handleSchool],
+  ["work", handleWork],
+]);
 
 const handleClickMenu = (key) => {
-  profileStore.setActiveMenu(key);
+  personalStore.setActiveMenu(key);
   const func = methods.get(key);
   if (typeof func === "function") {
     func();

@@ -4,44 +4,59 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 23:00:06
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-16 23:21:48
+ * @LastEditTime: 2023-06-18 19:39:11
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalProfile.vue
 -->
 <template>
-  <div>
-    <OverlayHtml :position="position" :pixelOffsetPosition="['left', 'bottom']">
-      <div class="profile-window">
-        <svg-icon
-          iconName="icon-guanbi"
-          close
-          style="position: absolute; right: 12px; top: 18px; cursor: pointer"
-          @click="handleClick"
-        />
-        <img
-          class="profile-avatar"
-          src="~@/assets/images/cht.png"
-          alt="常浩田"
-        />
-        <ul class="profile-detail">
-          <li
-            class="profile-detail-item"
-            v-for="item in profileInfo"
-            :key="item.description"
-          >
-            <span>{{ item.description }}：</span>
-            <span>{{ item.value }}</span>
-          </li>
-        </ul>
-      </div>
-    </OverlayHtml>
-  </div>
+  <OverlayHtml
+    :position="position"
+    :pixelOffsetPosition="['left', 'bottom']"
+    :pixelOffset="[-8, 8]"
+  >
+    <div class="profile-window">
+      <svg-icon
+        iconName="icon-guanbi"
+        close
+        style="position: absolute; right: 18px; top: 26px; cursor: pointer"
+        @click="handleClick"
+      />
+      <img class="profile-avatar" src="~@/assets/images/cht.png" alt="常浩田" />
+      <ul class="profile-detail">
+        <li
+          class="profile-detail-item"
+          v-for="item in profileInfo"
+          :key="item.label"
+        >
+          <span>{{ item.label }}：</span>
+          <span>{{ item.value }}</span>
+        </li>
+      </ul>
+    </div>
+  </OverlayHtml>
+
+  <PersonalProfileAside />
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
 import OverlayHtml from "@/components/common/OverlayHtml/index.vue";
-import { useProfileStore } from "@/store/modules/profile.js";
-const profileStore = useProfileStore();
+import PersonalProfileAside from "./PersonalProfileAside.vue";
+
+import { onBeforeUnmount, reactive, ref, getCurrentInstance } from "vue";
+import { usePersonalStore } from "@/store/modules/personal.js";
+import PlottingShanguangdian from "@/cht3d/Plotting/PlottingShanguangdian/index.js";
+const { proxy } = getCurrentInstance();
+
+const shanguangdian = new PlottingShanguangdian(proxy.$cht3d, {
+  id: "jining",
+  name: "山东济宁",
+  position: [116.598213, 35.401114],
+  color: "rgb(3,255,255)",
+  collectionName: "cht",
+  maxVisibleHeight: 20000000,
+  time: 1,
+});
+
+const personalStore = usePersonalStore();
 
 // 济宁经纬度
 const JiNing = [116.598213, 35.401114];
@@ -49,30 +64,35 @@ let position = reactive(JiNing);
 
 const profileInfo = ref([
   {
-    description: "姓名",
+    label: "姓名",
     value: "常浩田",
   },
   {
-    description: "生日",
+    label: "生日",
     value: "1996年8月",
   },
   {
-    description: "籍贯",
+    label: "籍贯",
     value: "山东省济宁市",
   },
   {
-    description: "工作年限",
+    label: "工作年限",
     value: "5年",
   },
   {
-    description: "邮箱",
+    label: "邮箱",
     value: "changhaotian6@163.com",
   },
 ]);
 
+// 清楚菜单选中状态
 const handleClick = () => {
-  profileStore.setActiveMenu("");
+  personalStore.setActiveMenu("");
 };
+
+onBeforeUnmount(() => {
+  shanguangdian.destroy();
+});
 </script>
 
 <style lang="scss" scoped>
@@ -83,6 +103,7 @@ const handleClick = () => {
   height: 264px;
   background-image: url(@/assets/images/popup_1.png);
   background-size: 100% 100%;
+  background-position: -10px 10px;
 }
 
 .profile-avatar {

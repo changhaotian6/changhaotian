@@ -9,6 +9,7 @@
     "preview": "vite preview --port 8080"
   },
   "dependencies": {
+    "@dataview/datav-vue3": "^0.0.0-test.1672506674342",
     "pinia": "^2.1.4",
     "vue": "^3.2.47",
     "vue-router": "^4.2.2"
