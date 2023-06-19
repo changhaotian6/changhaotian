@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 23:00:06
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-18 20:26:04
+ * @LastEditTime: 2023-06-19 14:47:42
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalProfileAside.vue
 -->
 <template>
@@ -28,15 +28,7 @@
       </div>
       <!-- 自我评价 -->
       <AsideDescriptionTitle> 自我评价 </AsideDescriptionTitle>
-      <div class="aside-evaluation">
-        <p
-          class="aside-evaluation-item"
-          v-for="content in evaluationInfo"
-          :key="content"
-        >
-          {{ content }}
-        </p>
-      </div>
+      <AsideDescriptionParagraph :paragraph-info="evaluationInfo"/>
     </div>
   </AsideContainer>
 </template>
@@ -44,6 +36,7 @@
 <script setup>
 import AsideContainer from "@/components/content/AsideContainer/index.vue";
 import AsideDescriptionTitle from "@/components/content/AsideDescriptionTitle/index.vue";
+import AsideDescriptionParagraph from '@/components/content/AsideDescriptionParagraph/index.vue'
 import { reactive, ref } from "vue";
 const profileInfo = reactive([
   {
@@ -99,7 +92,7 @@ const evaluationInfo = reactive([
 .aside-basic-content-item {
   margin-bottom: 15px;
   font-size: 14px;
-  color: #eee;
+  color: $descColor;
   &:last-child {
     margin-bottom: 0;
   }
@@ -109,16 +102,6 @@ const evaluationInfo = reactive([
   margin: 0 auto;
   width: calc(100% - 30px);
   height: 1px;
-  background-color: #00e5e5;
-}
-
-.aside-evaluation {
-  padding: 15px;
-}
-.aside-evaluation-item {
-  padding-bottom: 8px;
-  line-height: 22px;
-  font-size: 14px;
-  color: #eee;
+  background-color: $linkColor;
 }
 </style>

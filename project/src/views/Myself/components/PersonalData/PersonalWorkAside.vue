@@ -4,40 +4,55 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 23:00:06
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-18 21:35:26
+ * @LastEditTime: 2023-06-19 21:09:33
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalWorkAside.vue
 -->
 <template>
   <AsideContainer>
-    <div class="aside-wrap">
+    <div class="aside-wrap" v-show="!isDetail">
       <div class="aside-title"></div>
-      <div class="compony-info" v-for="item in workInfo" :key="item.id">
+      <div
+        class="compony-info"
+        v-for="item in workInfo"
+        :key="item.id"
+        @click.stop="handleDetail(item)"
+      >
+        <SvgIcon iconName="icon-jinru1" class="enter"></SvgIcon>
         <img class="compony-logo" :src="item.img" />
         <div class="compony-desc">
-          <div class="compony-date">{{ item.date }}</div>
-          <div class="compony-name">{{ item.name }}</div>
-          <div class="compony-detail">查看详情</div>
+          <div class="compony-desc-item">{{ item.date }}{{ isDetail }}</div>
+          <div class="compony-desc-item">{{ item.name }}</div>
+          <div class="compony-desc-item">{{ item.jobPosition }}</div>
+          <!-- <span class="compony-detail" >
+            查看详情
+          </span> -->
         </div>
       </div>
     </div>
+    <PersonalWorkAsideDetail
+      :compony-info="currentComponyInfo"
+      v-show="isDetail"
+      @on-back="isDetail = false"
+    />
   </AsideContainer>
+
 </template>
 
 <script setup>
 import AsideContainer from "@/components/content/AsideContainer/index.vue";
-
-import { defineProps, reactive, ref } from "vue";
-
-const { workInfos } = defineProps({
-  workInfos: {
-    type: Array,
-    default: [],
-  },
-});
-
+import PersonalWorkAsideDetail from "./PersonalWorkAsideDetail.vue";
+import { inject, reactive, ref } from "vue";
+let isDetail = ref(false);
+let currentComponyInfo = reactive({});
+const workInfos = inject("workInfos");
 const workInfo = reactive([]);
 // 按时间倒叙
 workInfos.forEach((item) => workInfo.unshift(item));
+
+const handleDetail = (info) => {
+  isDetail.value = true;
+  currentComponyInfo = info;
+};
 </script>
 
 <style lang="scss" scoped>
@@ -51,15 +66,22 @@ workInfos.forEach((item) => workInfo.unshift(item));
   background-size: 190% 100%;
   background-position: center center;
 }
-// .compony-name {
-//   font-weight: 600;
-//   font-size: 16px;
-//   text-decoration: underline;
-//   color: #00e5e5;
-// }
 .compony-info {
+  position: relative;
   display: flex;
-  padding: 16px;
+  margin: 10px 16px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all .2s;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    .enter {
+      display: block;
+    }
+  }
 }
 .compony-logo {
   margin-right: 15px;
@@ -68,19 +90,29 @@ workInfos.forEach((item) => workInfo.unshift(item));
 }
 .compony-desc {
 }
-.compony-date,
-.compony-name {
-  margin-bottom: 12px;
+.compony-desc-item {
+  margin-bottom: 10px;
   line-height: 1;
   font-size: 14px;
-  color: #eee;
-}
-.compony-name {
+  color: $descColor;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 .compony-detail {
   font-size: 14px;
   text-decoration: underline;
-  color: #00e5e5;
+  color: $linkColor;
   cursor: pointer;
+}
+
+.enter {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  margin-top: -8px;
+  transition: all .2s;
 }
 </style>

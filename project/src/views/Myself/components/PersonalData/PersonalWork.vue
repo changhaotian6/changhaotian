@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-17 17:39:39
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-18 21:29:34
+ * @LastEditTime: 2023-06-19 22:25:33
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalWork.vue
 -->
 
@@ -28,80 +28,36 @@
           <span>{{ item.value }}</span>
         </li>
       </ul>
-      <div class="work-buttons">
+      <!-- <div class="work-buttons">
         <div class="work-buttons-item">工作经验</div>
         <div class="work-buttons-item">项目经历</div>
-      </div>
+      </div> -->
       <div class="work-window-footer"></div>
     </div>
   </OverlayHtml>
-  <PersonalWorkAside :work-infos="workInfos"/>
+  <PersonalWorkAside />
 </template>
 
 <script setup>
 import OverlayHtml from "@/components/common/OverlayHtml/index.vue";
 import PersonalWorkAside from "./PersonalWorkAside.vue";
-import { onMounted, reactive, getCurrentInstance, onBeforeUnmount } from "vue";
+import {
+  onMounted,
+  reactive,
+  provide,
+  getCurrentInstance,
+  onBeforeUnmount,
+} from "vue";
 import { usePersonalStore } from "@/store/modules/personal.js";
-import { getAssetURL, uuid } from "@/utils/utils";
+import { mockWorkInfos } from "@/mock/index";
 
 const { proxy } = getCurrentInstance();
 
 const personalStore = usePersonalStore();
 
-let workInfos = reactive([
-  {
-    id: "bochuang",
-    name: "威海博创软件科技有限公司",
-    img: getAssetURL('bochuang.png'),
-    position: [122.131526, 37.504885],
-    date: '2018.01~2020.01',
-    workInfo: [
-      {
-        label: "在职时间",
-        value: "2018.01~2020.01",
-      },
-      {
-        label: "任职岗位",
-        value: "前端开发工程师",
-      },
-    ],
-  },
-  {
-    id: "duandian",
-    name: "广东端点科技有限公司",
-    img: getAssetURL('duandian.png'),
-    position: [113.549854, 22.136295],
-    date: '2020.04~2021.05',
-    workInfo: [
-      {
-        label: "在职时间",
-        value: "2020.04~2021.05",
-      },
-      {
-        label: "任职岗位",
-        value: "前端开发工程师",
-      },
-    ],
-  },
-  {
-    id: "huarong",
-    name: "华戎信息产业有限公司",
-    img: getAssetURL('huarong.png'),
-    position: [117.135163, 36.660995],
-    date: '2021.07~2023.02',
-    workInfo: [
-      {
-        label: "在职时间",
-        value: "2021.07~2023.02",
-      },
-      {
-        label: "任职岗位",
-        value: "前端开发工程师",
-      },
-    ],
-  },
-]);
+let workInfos = reactive(mockWorkInfos);
+
+provide("workInfos", workInfos);
 
 const handleClick = () => {
   personalStore.setActiveMenu("");
@@ -117,9 +73,9 @@ onBeforeUnmount(() => {});
   position: relative;
   padding: 20px;
   width: 266px;
-  height: 210px;
+  height: 180px;
   background-image: url(@/assets/images/popup_3.png);
-  background-size: 100% 170px;
+  background-size: 100% 140px;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.3);
 }
@@ -170,13 +126,13 @@ onBeforeUnmount(() => {});
 }
 .work-buttons-item {
   font-size: 14px;
-  color: #00e5e5;
+  color: $linkColor;
   text-decoration: underline;
   cursor: pointer;
   transition: color 0.3s;
   &:hover {
     // font-weight: 600;
-    color: #00e5e5;
+    color: $linkColor;
   }
 }
 </style>

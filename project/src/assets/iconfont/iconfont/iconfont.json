@@ -6,6 +6,20 @@
   "description": "个人",
   "glyphs": [
     {
+      "icon_id": "14877141",
+      "name": "进入",
+      "font_class": "jinru1",
+      "unicode": "e7a2",
+      "unicode_decimal": 59298
+    },
+    {
+      "icon_id": "25132657",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e6b2",
+      "unicode_decimal": 59058
+    },
+    {
       "icon_id": "10268991",
       "name": "关闭",
       "font_class": "guanbi",

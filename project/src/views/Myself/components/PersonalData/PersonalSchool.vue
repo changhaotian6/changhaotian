@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-17 12:22:30
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-18 20:28:07
+ * @LastEditTime: 2023-06-19 21:07:07
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalSchool.vue
 -->
 <template>
@@ -49,75 +49,14 @@ import PersonalSchoolAside from "./PersonalSchoolAside.vue";
 
 import { onMounted, reactive, getCurrentInstance, onBeforeUnmount } from "vue";
 import { usePersonalStore } from "@/store/modules/personal.js";
-import { getAssetURL, uuid } from "@/utils/utils";
 import PlottingShanguangdian from "@/cht3d/Plotting/PlottingShanguangdian/index.js";
+import { mockSchoolInfos } from "@/mock/index.js";
 
 const { proxy } = getCurrentInstance();
 
 const personalStore = usePersonalStore();
 
-let schoolInfos = reactive([
-  {
-    id: "威海职业学院",
-    name: "威海职业学院",
-    position: [121.946604, 37.452907], // 威职经纬度
-    img: getAssetURL("weizhi.png"),
-    imageHeight: "100px",
-    color: "rgb(140,0,0)",
-    schoolInfo: [
-      {
-        label: "学校",
-        value: "威海职业学院",
-      },
-      {
-        label: "系所",
-        value: "信息工程系",
-      },
-      {
-        label: "专业",
-        value: "软件技术",
-      },
-      {
-        label: "入学日期",
-        value: "2015年09月01日",
-      },
-      {
-        label: "离校日期：",
-        value: "2018年07月01日",
-      },
-    ],
-  },
-  {
-    id: "山东科技大学",
-    name: "山东科技大学",
-    position: [116.972698, 36.678025], // 山科经纬度
-    img: getAssetURL("shanke.png"),
-    imageHeight: "80px",
-    color: "rgb(4,90,163)",
-    schoolInfo: [
-      {
-        label: "学校",
-        value: "山东科技大学",
-      },
-      {
-        label: "学院",
-        value: "信息学院",
-      },
-      {
-        label: "专业",
-        value: "计算机科学与技术",
-      },
-      {
-        label: "入学日期",
-        value: "2023年03月01日",
-      },
-      {
-        label: "离校日期：",
-        value: "2025年07月01日",
-      },
-    ],
-  },
-]);
+let schoolInfos = reactive(mockSchoolInfos);
 
 // 创建闪光点
 const shanguangdianList = schoolInfos.map((item) => {

@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 23:00:06
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-18 20:39:21
+ * @LastEditTime: 2023-06-19 17:16:10
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalSchoolAside.vue
 -->
 <template>
@@ -31,7 +31,7 @@
             <span class="content-desc">{{ item.value }}</span>
           </li>
         </ul>
-        <div class="divider"></div>
+        <!-- <div class="divider"></div> -->
       </div>
     </div>
   </AsideContainer>
@@ -112,7 +112,10 @@ let schoolInfos = reactive([
   position: relative;
   display: flex;
   align-items: center;
-  padding: 16px 15px;
+  margin: 10px 16px;
+  padding:  10px;
+  background-color: rgba(255,255,255,.2);
+  border-radius: 5px;
 }
 .aside-basic-avatar {
   margin-right: 10px;
@@ -123,9 +126,9 @@ let schoolInfos = reactive([
   flex: 1;
 }
 .aside-basic-content-item {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-size: 14px;
-  color: #eee;
+  color: $descColor;
   &:last-child {
     margin-bottom: 0;
   }
@@ -138,7 +141,7 @@ let schoolInfos = reactive([
   margin-left: -100px;
   width: 200px;
   height: 1px;
-  background-color: #00e5e5;
+  background-color: $linkColor;
 }
 
 .aside-evaluation {
@@ -148,6 +151,6 @@ let schoolInfos = reactive([
   padding-bottom: 8px;
   line-height: 22px;
   font-size: 14px;
-  color: #eee;
+  color: $descColor;
 }
 </style>

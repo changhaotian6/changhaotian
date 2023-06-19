@@ -115,7 +115,7 @@ const handleClickMenu = (key) => {
 
   &:hover,
   &.active {
-    color: #03ffff;
+    color: $activeColor;
     &::before {
       content: "";
       background-image: url(@/assets/images/border_2.png);

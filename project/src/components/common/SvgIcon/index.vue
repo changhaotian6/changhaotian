@@ -1,3 +1,12 @@
+<!--
+ * @Description: 
+ * @version: 1.0.0
+ * @Author: changhaotian6@163.com
+ * @Date: 2023-06-16 22:42:13
+ * @LastEditors: changhaotian6@163.com
+ * @LastEditTime: 2023-06-19 20:57:10
+ * @FilePath: \project\src\components\common\SvgIcon\index.vue
+-->
 <template>
   <svg :class="svgClass" aria-hidden="true" :style="style" @click="handleClick">
     <use :xlink:href="iconClassName" :fill="props.color" />
@@ -40,7 +49,6 @@ const iconClassName = computed(() => {
 // 给图标添加上类名
 
 const svgClass = computed(() => {
-  console.log(props.className)
   if (props.className) {
     return `svg-icon ${props.className} ${props.close ? "close" : ""}`;
   }
@@ -63,6 +71,7 @@ const handleClick = () => {
 
 .close {
   opacity: 0.8;
+  transition: opacity 0.2s;
   &:hover {
     opacity: 1;
   }

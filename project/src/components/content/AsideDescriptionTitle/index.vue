@@ -21,6 +21,6 @@ import { ref } from "vue";
   font-size: 16px;
   font-weight: 600;
   color: #fff;
-  border-bottom: 2px solid #00e5e5;
+  border-bottom: 2px solid $linkColor;
 }
 </style>
