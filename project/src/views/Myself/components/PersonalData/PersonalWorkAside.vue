@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 23:00:06
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-19 21:09:33
+ * @LastEditTime: 2023-06-19 22:38:28
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalWorkAside.vue
 -->
 <template>
@@ -108,7 +108,6 @@ const handleDetail = (info) => {
 }
 
 .enter {
-  display: none;
   position: absolute;
   top: 50%;
   right: 8px;
