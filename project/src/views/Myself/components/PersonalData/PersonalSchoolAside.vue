@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 23:00:06
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-19 17:16:10
+ * @LastEditTime: 2023-06-19 22:46:01
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalSchoolAside.vue
 -->
 <template>
@@ -31,7 +31,6 @@
             <span class="content-desc">{{ item.value }}</span>
           </li>
         </ul>
-        <!-- <div class="divider"></div> -->
       </div>
     </div>
   </AsideContainer>
@@ -39,61 +38,9 @@
 
 <script setup>
 import AsideContainer from "@/components/content/AsideContainer/index.vue";
-import AsideDescriptionTitle from "@/components/content/AsideDescriptionTitle/index.vue";
-
 import { reactive, ref } from "vue";
-import { getAssetURL, uuid } from "@/utils/utils";
-
-let schoolInfos = reactive([
-  {
-    id: "威海职业学院",
-    name: "威海职业学院",
-    img: getAssetURL("weizhi.png"),
-    imageHeight: "100px",
-    schoolInfo: [
-      {
-        label: "学校名称",
-        value: "威海职业学院",
-      },
-      {
-        label: "专业",
-        value: "软件技术",
-      },
-      {
-        label: "层次",
-        value: "专科",
-      },
-      {
-        label: "学习形式",
-        value: "全日制",
-      },
-    ],
-  },
-  {
-    id: "山东科技大学",
-    name: "山东科技大学",
-    img: getAssetURL("shanke.png"),
-    imageHeight: "80px",
-    schoolInfo: [
-      {
-        label: "学校名称",
-        value: "山东科技大学",
-      },
-      {
-        label: "专业",
-        value: "软件技术",
-      },
-      {
-        label: "层次",
-        value: "本科",
-      },
-      {
-        label: "学习形式",
-        value: "函授",
-      },
-    ],
-  },
-]);
+import { mockSchoolInfosAside } from "@/mock/index";
+let schoolInfos = reactive(mockSchoolInfosAside);
 </script>
 
 <style lang="scss" scoped>
@@ -113,8 +60,8 @@ let schoolInfos = reactive([
   display: flex;
   align-items: center;
   margin: 10px 16px;
-  padding:  10px;
-  background-color: rgba(255,255,255,.2);
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 5px;
 }
 .aside-basic-avatar {

@@ -1,5 +1,6 @@
 import { getAssetURL, uuid } from "@/utils/utils";
 
+// 个人信息
 export const mockProfileInfo = [
   {
     label: "姓名",
@@ -23,6 +24,7 @@ export const mockProfileInfo = [
   },
 ];
 
+// 学校信息
 export const mockSchoolInfos = [
   {
     id: "威海职业学院",
@@ -86,6 +88,59 @@ export const mockSchoolInfos = [
   },
 ];
 
+// 学校信息2
+export let mockSchoolInfosAside = [
+  {
+    id: "威海职业学院",
+    name: "威海职业学院",
+    img: getAssetURL("weizhi.png"),
+    imageHeight: "100px",
+    schoolInfo: [
+      {
+        label: "学校名称",
+        value: "威海职业学院",
+      },
+      {
+        label: "专业",
+        value: "软件技术",
+      },
+      {
+        label: "层次",
+        value: "专科",
+      },
+      {
+        label: "学习形式",
+        value: "全日制",
+      },
+    ],
+  },
+  {
+    id: "山东科技大学",
+    name: "山东科技大学",
+    img: getAssetURL("shanke.png"),
+    imageHeight: "80px",
+    schoolInfo: [
+      {
+        label: "学校名称",
+        value: "山东科技大学",
+      },
+      {
+        label: "专业",
+        value: "软件技术",
+      },
+      {
+        label: "层次",
+        value: "本科",
+      },
+      {
+        label: "学习形式",
+        value: "函授",
+      },
+    ],
+  },
+];
+
+// 工作经历信息
 export const mockWorkInfos = [
   {
     id: "bochuang",
@@ -207,10 +262,11 @@ export const mockWorkInfos = [
   },
 ];
 
+// 项目经历信息
 export const projects = {
   lhpt: {
     name: "蓝海平台",
-    date: '2022.04~2023.02',
+    date: "2022.04~2023.02",
     description: `蓝海平台是一个微前端架构模式的低代码工程，是公司其他所有产品一个必须依赖的基座，前端工程复杂度也较高。我主要负责项目中单据中心模块、IM模块、应用中心模块的研发工作，及针对其他产品线的提出的需求和问题进行评估和指定研发方案。`,
     stack:
       "Vue + Vuex + Vue Router + AntDesign + axios + Less + WebSocket + 微前端",
@@ -224,7 +280,7 @@ export const projects = {
   },
   ht: {
     name: "海图",
-    date: '2021.07~2022.04',
+    date: "2021.07~2022.04",
     description: `海图是一个可视化低代码平台。拥有丰富的ECharts图表组件、多个文本组件、地图组件、边框组件等，并且可以在线开发自定义需求的组件。我在此项目中主要负责组件的研发、组件联动功能、全局变量功能、3D功能研发（标绘、全景图、图上推演、快照等）。`,
     stack:
       "Vue + Vuex + Vue Router + ElementUI + Cesium + OpenLayers + Panolens + axios + sass",
@@ -237,7 +293,7 @@ export const projects = {
   },
   bpty: {
     name: "博乒体育",
-    date: '2020.04~2020.07',
+    date: "2020.04~2020.07",
     description: `本项目是一个微信小程序项目。主要实现的功能有场馆预定、课程购买、商城功能、赛事直播、新闻资讯、赛事报名、俱乐部管理等功能，实现了乒乓球运动从购买到直播的一个闭环生态体系。`,
     stack: "Vue + Vuex + Vue Router + iView + uni-app + axios + scss + flex",
     content: [
@@ -249,7 +305,7 @@ export const projects = {
   },
   jzlw: {
     name: "精致礼物",
-    date: '2020.07~2020.09',
+    date: "2020.07~2020.09",
     description: `本项目是一个微信小程序项目。主要实现的功能有礼物分类、礼物智选、礼品购买与购物车功能、分销推广功能、供应商功能等功能模块，实现了通过分销推广模式来进行物品的销售，让大家都参与进物品的流通环节。`,
     stack:
       "Vue + Vuex + Vue Router + iView + less + uni-app + axios + scss + flex",
@@ -262,20 +318,20 @@ export const projects = {
   },
   qwzs: {
     name: "千雾助手",
-    date: '2020.10~2021.02',
+    date: "2020.10~2021.02",
     description: `本项目是一个移动端APP项目。主要实现的有代理商管理、库存管理、商城体系、业绩可视化、新闻资讯、消息推送等功能模块，是一款多模式分销代理的产品。我主要负责代理商管理模块、库存管理、商城体系、业绩数据可视化、消息通知模块的APP及后台管理系统的开发与实现。`,
     stack:
       "uni-app + uniPush + Vue + Vuex + Vue Router + iView + Less + axios + Sass + flex",
     content: [
-        "1、通过Sass中的变量、函数和继承功能实现了App换肤功能。",
-        "2、使用ECharts开发了业绩数据可视化模块。",
-        "3、针对使用uniPush时手机收不到推送消息问题，发现有些手机品牌不兼容，后面进行格式兼容处理解决了此问题。",
-        "4、开发完成后负责发布应用到蒲公英应用中心。",
+      "1、通过Sass中的变量、函数和继承功能实现了App换肤功能。",
+      "2、使用ECharts开发了业绩数据可视化模块。",
+      "3、针对使用uniPush时手机收不到推送消息问题，发现有些手机品牌不兼容，后面进行格式兼容处理解决了此问题。",
+      "4、开发完成后负责发布应用到蒲公英应用中心。",
     ],
   },
   veshop: {
     name: "Veshop",
-    date: '2021.02~2021.05',
+    date: "2021.02~2021.05",
     description: `本项目是一个移动端APP项目。主要实现的有商品代购模块、客服咨询、会员体系、消息推送、多语言国际化、交易数据可视化、商品采购及汇率差计算等功能模块，是一款针对港澳台用户的代购APP。`,
     stack:
       "Vue + Vuex + Vue Router + iView + less + uni-app + uniPush + socket + axios + scss + flex",
@@ -288,7 +344,7 @@ export const projects = {
   },
   nyrl: {
     name: "南阳热力考试系统",
-    date: '2018.11~2019.01',
+    date: "2018.11~2019.01",
     description: `本项目是一个移动端项目，采用Vue框架开发。实现的主要业务有试题题库管理、试卷组卷、模拟考试、线上考试、试卷审批、成绩分析管理等。`,
     stack: "Vue2.0 + Vuex + Vue Router + ElementUI + axios + less + flex",
     content: [
@@ -299,7 +355,7 @@ export const projects = {
   },
   zhrw: {
     name: "智慧热网管理系统",
-    date: '2019.02~2020.01',
+    date: "2019.02~2020.01",
     description: `本项目是PC端项目。采用react框架进行开发，主要功能有数据的监控与报警、仪表远程管控、报表管理、数据分析、地理信息、财务管理模块、巡检管理模块、客服工单模块等，实现了对设备的远程管控。我主要负责仪表报警、报表管理、数据分析、巡检管理和客服工单功能模块的实现和页面布局的设计。`,
     stack: "React + Redux + React-Router + Ant Design + axios + Less",
     content: [
