@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 22:14:17
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-17 18:27:22
+ * @LastEditTime: 2023-06-20 13:41:19
  * @FilePath: \project\src\views\Myself\components\PersonalData\index.vue
 -->
 <!--
@@ -18,10 +18,11 @@
 -->
 <template>
   <div class="personal-container">
-    <PersonalMenu :menuList="menuList"/>
+    <PersonalMenu :menuList="menuList" />
     <PersonalProfile v-if="personalStore.activeMenu === 'profile'" />
     <PersonalSchool v-if="personalStore.activeMenu === 'school'" />
-    <PersonalWork v-if="personalStore.activeMenu === 'work'"/>
+    <PersonalWork v-if="personalStore.activeMenu === 'work'" />
+    <PersonalSkill v-if="personalStore.activeMenu === 'skill'" />
   </div>
 </template>
 
@@ -30,11 +31,12 @@ import PersonalMenu from "./PersonalMenu.vue";
 import PersonalProfile from "./PersonalProfile.vue";
 import PersonalSchool from "./PersonalSchool.vue";
 import PersonalWork from "./PersonalWork.vue";
+import PersonalSkill from "./PersonalSkill.vue";
+
 import { usePersonalStore } from "@/store/modules/personal.js";
-import { ref, defineProps, toRefs, computed, watch, reactive } from "vue";
+import { reactive } from "vue";
 
 const personalStore = usePersonalStore();
-
 
 const menuList = reactive([
   {
@@ -54,7 +56,6 @@ const menuList = reactive([
     key: "skill",
   },
 ]);
-
 </script>
 
 <style lang="scss" scoped>

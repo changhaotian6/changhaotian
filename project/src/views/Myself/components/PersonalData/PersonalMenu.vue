@@ -73,6 +73,10 @@ const methods = new Map([
 ]);
 
 const handleClickMenu = (key) => {
+  if (personalStore.activeMenu === key) {
+    personalStore.setActiveMenu("");
+    return;
+  }
   personalStore.setActiveMenu(key);
   const func = methods.get(key);
   if (typeof func === "function") {
@@ -98,7 +102,7 @@ const handleClickMenu = (key) => {
   line-height: 26px;
   text-align: center;
   font-size: 16px;
-  color: #aaa;
+  color: $descColor;
   cursor: pointer;
   transition: all 0.3s;
   &::before {

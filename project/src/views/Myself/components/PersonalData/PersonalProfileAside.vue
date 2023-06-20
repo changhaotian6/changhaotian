@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 23:00:06
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-19 14:47:42
+ * @LastEditTime: 2023-06-20 13:37:22
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalProfileAside.vue
 -->
 <template>
@@ -28,7 +28,7 @@
       </div>
       <!-- 自我评价 -->
       <AsideDescriptionTitle> 自我评价 </AsideDescriptionTitle>
-      <AsideDescriptionParagraph :paragraph-info="evaluationInfo"/>
+      <AsideDescriptionParagraph :paragraph-info="evaluationInfo" />
     </div>
   </AsideContainer>
 </template>
@@ -36,8 +36,11 @@
 <script setup>
 import AsideContainer from "@/components/content/AsideContainer/index.vue";
 import AsideDescriptionTitle from "@/components/content/AsideDescriptionTitle/index.vue";
-import AsideDescriptionParagraph from '@/components/content/AsideDescriptionParagraph/index.vue'
+import AsideDescriptionParagraph from "@/components/content/AsideDescriptionParagraph/index.vue";
+
 import { reactive, ref } from "vue";
+import { mockEvaluationInfo } from "@/mock/index.js";
+
 const profileInfo = reactive([
   {
     label: "姓名",
@@ -57,12 +60,7 @@ const profileInfo = reactive([
   },
 ]);
 
-const evaluationInfo = reactive([
-  "1、具备团队合作意识，能积极主动的配合其他同事完成工作，有较强的责任心和学习能力。",
-  "2、对于自己的发展，有长期明确的职业规划，善于在工作中学习，总结，不断进步。 ",
-  "3、对于新技术新事物有较强的接受能力，愿意主动学习其他领域值得探索的技术，不断完善提高自己。",
-  "4、期待挑战，不具困难。宝剑锋从磨砺出，梅花香自苦寒来。",
-]);
+const evaluationInfo = reactive(mockEvaluationInfo);
 </script>
 
 <style lang="scss" scoped>

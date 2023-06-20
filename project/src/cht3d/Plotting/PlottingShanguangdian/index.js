@@ -47,8 +47,6 @@ class PlottingShanguangdian {
     this.entity = this.getCollection(this.options.collectionName).entities.add(
       this.shanguangdian.entity
     );
-    console.log(this.getCollection(this.options.collectionName))
-    // console.log('实体',this.entity, this.getCollection(this.options.collectionName), this.getCollection(this.options.collectionName).entities)
   }
 
   // 获取集合对象（不存在执行创建）
@@ -65,7 +63,6 @@ class PlottingShanguangdian {
   // 删除实体
   removeEntity() {
     this.entity.show = false;
-    console.log('删除实体',this.entity)
     this.getCollection(this.options.collectionName).entities.remove(
       this.entity
     );

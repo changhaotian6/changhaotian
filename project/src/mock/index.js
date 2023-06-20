@@ -24,6 +24,13 @@ export const mockProfileInfo = [
   },
 ];
 
+export const mockEvaluationInfo = [
+  "1、具备团队合作意识，能积极主动的配合其他同事完成工作，有较强的责任心和学习能力。",
+  "2、对于自己的发展，有长期明确的职业规划，善于在工作中学习，总结，不断进步。 ",
+  "3、对于新技术新事物有较强的接受能力，愿意主动学习其他领域值得探索的技术，不断完善提高自己。",
+  "4、期待挑战，不具困难。宝剑锋从磨砺出，梅花香自苦寒来。",
+];
+
 // 学校信息
 export const mockSchoolInfos = [
   {
@@ -366,3 +373,16 @@ export const projects = {
     ],
   },
 };
+
+export const mockSkillInfo = [
+  "1、熟练使用Vue2、Vue3，并对其源码有自己的理解和认识。",
+  "2、熟练技术栈对应的多种组件库，如ElementUI、AntDesign、iview。",
+  "3、熟练使用原生JS、ES6、HTML5、CSS3。",
+  "4、熟练使用Echarts、AntV等2D可视化解决方案，使用Cesium进行3D可视化工作开发，了解ThreeJS。",
+  "5、熟练使用多种设计模式，能在合适的地方进行性能优化。",
+  "6、熟练使用webpack配置，能够从0搭建项目工程化配置。",
+  "7、熟练使用Less、Sass等预处理器。",
+  "8、熟练使用uni-app进行小程序、APP开发。",
+  "9、熟悉微前端架构思维模式。",
+  "10、熟悉NodeJS及Express、koa框架。",
+];

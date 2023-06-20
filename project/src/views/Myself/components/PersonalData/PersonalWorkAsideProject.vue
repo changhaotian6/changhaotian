@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 23:00:06
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-19 22:23:03
+ * @LastEditTime: 2023-06-20 13:25:29
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalWorkAsideProject.vue
 -->
 <template>
@@ -69,10 +69,9 @@ const props = defineProps({
 
 const emit = defineEmits(["close"]);
 
-let isVisible = ref(props.visible);
+const isVisible = ref(props.visible);
 
 let currentProjectInfo = reactive({});
-console.log(currentProjectInfo);
 watch(
   () => props.visible,
   (val) => {
@@ -84,7 +83,6 @@ watch(
   () => props.projectInfo.id,
   (val) => {
     currentProjectInfo = projects[val];
-    console.log(currentProjectInfo);
   }
 );
 

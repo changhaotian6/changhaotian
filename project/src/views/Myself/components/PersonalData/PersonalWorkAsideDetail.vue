@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 23:00:06
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-19 22:39:08
+ * @LastEditTime: 2023-06-20 13:30:44
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalWorkAsideDetail.vue
 -->
 <template>
@@ -137,7 +137,7 @@ const handleCloseProjectModal = () => {
 .aside-wrap.detail {
   position: relative;
   padding: 12px 15px;
-  height: 100%;
+  height: 550px;
 }
 
 .aside-wrap-bg {
