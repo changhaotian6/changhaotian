@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 23:00:06
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-20 14:30:41
+ * @LastEditTime: 2023-06-20 22:31:56
  * @FilePath: \project\src\components\content\AsideDescriptionParagraph\index.vue
 -->
 <template>
@@ -14,13 +14,12 @@
       v-for="content in paragraphInfoArr"
       :key="content"
       v-html="content"
-    >
-    </p>
+    ></p>
   </div>
 </template>
 
 <script setup>
-import { defineProps, reactive, ref } from "vue";
+import { defineProps, reactive, watch } from "vue";
 import { uuid } from "@/utils/utils";
 /** Example **/
 // const paragraphInfo = reactive([
@@ -30,7 +29,7 @@ import { uuid } from "@/utils/utils";
 //   "4、期待挑战，不具困难。宝剑锋从磨砺出，梅花香自苦寒来。",
 // ]);
 
-const { paragraphInfo, keywords } = defineProps({
+const props = defineProps({
   paragraphInfo: {
     type: Array,
     default: [],
@@ -41,8 +40,7 @@ const { paragraphInfo, keywords } = defineProps({
   },
 });
 
-let paragraphInfoArr = reactive(paragraphInfo);
-
+let paragraphInfoArr = reactive(props.paragraphInfo);
 /**
  * 替换关键字
  * @param {string} str 任意字符串
@@ -75,12 +73,19 @@ const getAfterReplaceKeywordParagraph = (paragraphInfoArr, keywords) => {
   return paragraphInfoStr.split(separator);
 };
 
-if (keywords.length) {
-  paragraphInfoArr = getAfterReplaceKeywordParagraph(
-    paragraphInfoArr,
-    keywords
-  );
-}
+watch(
+  () => props.paragraphInfo,
+  (val) => {
+    paragraphInfoArr = val;
+
+    if (props.keywords.length) {
+      paragraphInfoArr = getAfterReplaceKeywordParagraph(
+        paragraphInfoArr,
+        props.keywords
+      );
+    }
+  }
+);
 </script>
 
 <style lang="scss" scoped>

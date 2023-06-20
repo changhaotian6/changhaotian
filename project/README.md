@@ -1,7 +1,19 @@
 # Vue 3 + Vite
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-## Recommended IDE Setup
+###  vite-plugin-imagemin插件安装失败解决方案
+ 参考文章：
+  - https://github.com/vbenjs/vite-plugin-imagemin/blob/main/README.zh_CN.md
+  - https://www.kuxiaoxin.com/archives/73
+  - https://juejin.cn/post/7096749072345726990
+  - https://blog.csdn.net/u012102536/article/details/90751519
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+最后我是使用yarn 单独安装成功的
+  ``` javascript
+  yarn add vite-plugin-imagemin --dev
+  ```
+
+
+
+
+  

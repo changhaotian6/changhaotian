@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-14 13:48:17
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-15 22:22:39
+ * @LastEditTime: 2023-06-20 22:38:26
  * @FilePath: \project\src\router\index.js
  */
 import { createRouter, createWebHashHistory } from "vue-router";
@@ -28,7 +28,8 @@ const router = createRouter({
     {
       path: "/myself",
       name: "myself",
-      component: () => import("@/views/Myself/index.vue"),
+      component: import("@/views/Myself/index.vue"),
+      // component: () => import("@/views/Myself/index.vue"),
     },
   ],
 });

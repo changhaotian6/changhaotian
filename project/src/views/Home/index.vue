@@ -4,8 +4,8 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-14 12:56:40
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-15 14:05:07
- * @FilePath: \project\src\views\home\index.vue
+ * @LastEditTime: 2023-06-20 22:39:25
+ * @FilePath: \project\src\views\Home\index.vue
 -->
 <template>
   <div class="word-container">
@@ -153,7 +153,7 @@ onMounted(() => {
   text-align: center;
   cursor: pointer;
   opacity: 0;
-  animation: wordButton 1.5s linear 1.8s;
+  animation: wordButton 1.5s linear 3s;
   animation-fill-mode: forwards;
 }
 

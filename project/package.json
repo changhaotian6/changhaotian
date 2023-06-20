@@ -17,9 +17,17 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
     "cesium": "^1.106.1",
+    "rollup-plugin-visualizer": "^5.9.2",
     "sass": "^1.63.4",
     "sass-loader": "^13.3.2",
+    "terser": "^5.18.1",
     "vite": "^4.3.9",
-    "vite-plugin-cesium": "^1.2.22"
+    "vite-plugin-cesium": "^1.2.22",
+    "vite-plugin-imagemin": "^0.6.1",
+    "vite-plugin-compression": "^0.5.1"
+  },
+  "resolutions": {
+    "//": "用于安装imagemin的依赖关系，因为中国可能没有安装imagemin。",
+    "bin-wrapper": "npm:bin-wrapper-china"
   }
 }
