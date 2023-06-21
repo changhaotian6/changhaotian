@@ -1,8 +1,9 @@
-# Vue 3 + Vite
 
+### 技术栈
+> Vue 3 + Vite + Vue-Router + pinia + Cesium + Sass
 
 ###  vite-plugin-imagemin插件安装失败解决方案
- 参考文章：
+ 一些参考文章：
   - https://github.com/vbenjs/vite-plugin-imagemin/blob/main/README.zh_CN.md
   - https://www.kuxiaoxin.com/archives/73
   - https://juejin.cn/post/7096749072345726990
