@@ -6,6 +6,13 @@
   "description": "个人",
   "glyphs": [
     {
+      "icon_id": "23405551",
+      "name": "图片",
+      "font_class": "icon_xinyong_xianxing_jijin-239",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
       "icon_id": "14877141",
       "name": "进入",
       "font_class": "jinru1",

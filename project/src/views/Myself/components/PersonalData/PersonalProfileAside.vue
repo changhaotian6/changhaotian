@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 23:00:06
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-20 13:37:22
+ * @LastEditTime: 2023-06-21 13:48:02
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalProfileAside.vue
 -->
 <template>
@@ -14,7 +14,7 @@
       <!-- 基础信息 -->
       <AsideDescriptionTitle> 基础信息 </AsideDescriptionTitle>
       <div class="aside-basic">
-        <img class="aside-basic-avatar" src="@/assets/images/cht.png" />
+        <Image class="aside-basic-avatar" :src="getAssetURL('cht.png')" />
         <ul class="aside-basic-content">
           <li
             class="aside-basic-content-item"
@@ -34,12 +34,14 @@
 </template>
 
 <script setup>
+import Image from "@/components/common/Image/index.vue";
 import AsideContainer from "@/components/content/AsideContainer/index.vue";
 import AsideDescriptionTitle from "@/components/content/AsideDescriptionTitle/index.vue";
 import AsideDescriptionParagraph from "@/components/content/AsideDescriptionParagraph/index.vue";
 
 import { reactive, ref } from "vue";
 import { mockEvaluationInfo } from "@/mock/index.js";
+import { getAssetURL } from "@/utils/utils.js";
 
 const profileInfo = reactive([
   {

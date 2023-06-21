@@ -18,7 +18,7 @@
         @click.stop="handleDetail(item)"
       >
         <SvgIcon iconName="icon-jinru1" class="enter"></SvgIcon>
-        <img class="compony-logo" :src="item.img" />
+        <Image class="compony-logo" :src="item.img" />
         <div class="compony-desc">
           <div class="compony-desc-item">{{ item.date }}{{ isDetail }}</div>
           <div class="compony-desc-item">{{ item.name }}</div>
@@ -35,13 +35,14 @@
       @on-back="isDetail = false"
     />
   </AsideContainer>
-
 </template>
 
 <script setup>
+import Image from "@/components/common/Image/index.vue";
 import AsideContainer from "@/components/content/AsideContainer/index.vue";
 import PersonalWorkAsideDetail from "./PersonalWorkAsideDetail.vue";
 import { inject, reactive, ref } from "vue";
+
 let isDetail = ref(false);
 let currentComponyInfo = reactive({});
 const workInfos = inject("workInfos");
@@ -74,7 +75,7 @@ const handleDetail = (info) => {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 5px;
   cursor: pointer;
-  transition: all .2s;
+  transition: all 0.2s;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.3);
@@ -112,6 +113,6 @@ const handleDetail = (info) => {
   top: 50%;
   right: 8px;
   margin-top: -8px;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 </style>

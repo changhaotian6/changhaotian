@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 23:00:06
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-20 22:31:56
+ * @LastEditTime: 2023-06-21 11:57:30
  * @FilePath: \project\src\components\content\AsideDescriptionParagraph\index.vue
 -->
 <template>
@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { defineProps, reactive, watch } from "vue";
+import { defineProps, reactive, watch, computed } from "vue";
 import { uuid } from "@/utils/utils";
 /** Example **/
 // const paragraphInfo = reactive([
@@ -41,15 +41,15 @@ const props = defineProps({
 });
 
 let paragraphInfoArr = reactive(props.paragraphInfo);
+
 /**
  * 替换关键字
  * @param {string} str 任意字符串
  * @param {string} keyword 关键字
  * */
 const replaceKeyword = (str, keyword) => {
-  var reg = new RegExp(`(${keyword})`, "gi");
-  var replace = '<span style="color:#03ffff;">$1</span>';
-  // var replace = '<span style="color:#03ffff;">$1</span>';
+  const reg = new RegExp(`(${keyword})`, "gi");
+  const replace = '<span style="color:#03ffff;">$1</span>';
   return str.replace(reg, replace);
 };
 
@@ -77,13 +77,15 @@ watch(
   () => props.paragraphInfo,
   (val) => {
     paragraphInfoArr = val;
-
     if (props.keywords.length) {
       paragraphInfoArr = getAfterReplaceKeywordParagraph(
         paragraphInfoArr,
         props.keywords
       );
     }
+  },
+  {
+    immediate: true,
   }
 );
 </script>

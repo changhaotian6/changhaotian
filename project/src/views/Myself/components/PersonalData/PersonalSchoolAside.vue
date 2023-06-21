@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 23:00:06
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-19 22:46:01
+ * @LastEditTime: 2023-06-21 13:23:42
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalSchoolAside.vue
 -->
 <template>
@@ -16,7 +16,7 @@
         v-for="schoolItem in schoolInfos"
         :key="schoolItem.id"
       >
-        <img
+        <Image
           class="aside-basic-avatar"
           :src="schoolItem.img"
           :style="{ height: schoolItem.imageHeight }"
@@ -37,6 +37,7 @@
 </template>
 
 <script setup>
+import Image from "@/components/common/Image/index.vue";
 import AsideContainer from "@/components/content/AsideContainer/index.vue";
 import { reactive, ref } from "vue";
 import { mockSchoolInfosAside } from "@/mock/index";

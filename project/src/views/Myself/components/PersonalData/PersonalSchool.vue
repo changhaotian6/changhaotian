@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-17 12:22:30
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-19 21:07:07
+ * @LastEditTime: 2023-06-21 13:22:25
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalSchool.vue
 -->
 <template>
@@ -22,12 +22,7 @@
         style="position: absolute; right: 40px; top: 46px; cursor: pointer"
         @click="handleClick"
       /> -->
-      <img
-        class="school-avatar"
-        :style="{ height: schoolItem.imageHeight }"
-        :src="schoolItem.img"
-        :alt="schoolItem.name"
-      />
+      <Image class="school-avatar" :style="{ height: schoolItem.imageHeight }" :src="schoolItem.img"/>
       <ul class="school-detail">
         <li
           class="school-detail-item"
@@ -46,11 +41,13 @@
 <script setup>
 import OverlayHtml from "@/components/common/OverlayHtml/index.vue";
 import PersonalSchoolAside from "./PersonalSchoolAside.vue";
+import Image from '@/components/common/Image/index.vue'
 
 import { onMounted, reactive, getCurrentInstance, onBeforeUnmount } from "vue";
 import { usePersonalStore } from "@/store/modules/personal.js";
 import PlottingShanguangdian from "@/cht3d/Plotting/PlottingShanguangdian/index.js";
 import { mockSchoolInfos } from "@/mock/index.js";
+import { getAssetURL } from "@/utils/utils.js";
 
 const { proxy } = getCurrentInstance();
 

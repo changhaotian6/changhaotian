@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4126698 */
-  src: url('iconfont.woff2?t=1687166921639') format('woff2'),
-       url('iconfont.woff?t=1687166921639') format('woff'),
-       url('iconfont.ttf?t=1687166921639') format('truetype');
+  src: url('iconfont.woff2?t=1687324035623') format('woff2'),
+       url('iconfont.woff?t=1687324035623') format('woff'),
+       url('iconfont.ttf?t=1687324035623') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-icon_xinyong_xianxing_jijin-239:before {
+  content: "\e664";
 }
 
 .icon-jinru1:before {

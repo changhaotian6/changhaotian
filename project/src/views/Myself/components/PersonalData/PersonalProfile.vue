@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-15 23:00:06
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-19 21:05:28
+ * @LastEditTime: 2023-06-21 13:19:32
  * @FilePath: \project\src\views\Myself\components\PersonalData\PersonalProfile.vue
 -->
 <template>
@@ -20,7 +20,7 @@
         style="position: absolute; right: 18px; top: 26px; cursor: pointer"
         @click="handleClick"
       />
-      <img class="profile-avatar" src="~@/assets/images/cht.png" alt="常浩田" />
+      <Image class="profile-avatar"  :src="getAssetURL('cht.png')"/>
       <ul class="profile-detail">
         <li
           class="profile-detail-item"
@@ -40,11 +40,13 @@
 <script setup>
 import OverlayHtml from "@/components/common/OverlayHtml/index.vue";
 import PersonalProfileAside from "./PersonalProfileAside.vue";
+import Image from '@/components/common/Image/index.vue'
 
 import { onBeforeUnmount, reactive, ref, getCurrentInstance } from "vue";
 import { usePersonalStore } from "@/store/modules/personal.js";
 import PlottingShanguangdian from "@/cht3d/Plotting/PlottingShanguangdian/index.js";
 import { mockProfileInfo } from "@/mock/index.js";
+import { getAssetURL } from "@/utils/utils.js";
 const { proxy } = getCurrentInstance();
 
 const shanguangdian = new PlottingShanguangdian(proxy.$cht3d, {
@@ -78,9 +80,9 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 .profile-window {
   display: flex;
-  padding: 35px 0 0 75px;
+  padding: 40px 0 0 75px;
   width: 435px;
-  height: 264px;
+  height: 240px;
   background-image: url(@/assets/images/popup_1.png);
   background-size: 100% 100%;
   background-position: -10px 10px;

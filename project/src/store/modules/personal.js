@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
 export const usePersonalStore = defineStore({
-  id: "profile",
+  id: "personal",
   state: () => {
     return {
       activeMenu: "",

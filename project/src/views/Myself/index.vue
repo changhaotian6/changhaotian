@@ -1,15 +1,17 @@
 <template>
   <div class="myself-container">
     <Visual />
-    <PersonalData/>
+    <PersonalData />
+    <ProjectAddress/>
+    <SiteTips/>
   </div>
 </template>
 
 <script setup>
+import ProjectAddress from "@/components/common/ProjectAddress/index.vue";
+import SiteTips from "@/components/common/SiteTips/index.vue";
 import PersonalData from "./components/PersonalData/index.vue";
 import Visual from "./components/Visual/index.vue";
-import { ref, reactive } from "vue";
-
 </script>
 
 <style lang="scss" scoped>

@@ -4,7 +4,7 @@
  * @Author: changhaotian6@163.com
  * @Date: 2023-06-16 22:42:13
  * @LastEditors: changhaotian6@163.com
- * @LastEditTime: 2023-06-19 20:57:10
+ * @LastEditTime: 2023-06-21 13:10:25
  * @FilePath: \project\src\components\common\SvgIcon\index.vue
 -->
 <template>
@@ -13,7 +13,7 @@
   </svg>
 </template>
 
-<script setup lang="ts">
+<script setup >
 import { computed } from "vue";
 
 const props = defineProps({
